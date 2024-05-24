@@ -1,0 +1,8 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+#Naming/PredicateName:
+#  Enabled: false
