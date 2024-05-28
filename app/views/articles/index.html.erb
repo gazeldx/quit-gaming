@@ -1,9 +1,9 @@
-<h1>Articles</h1>
+<h1>张健教戒除游戏瘾 - 家长篇</h1>
 
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <%= article.title %>
+      <%= article.title || article.path %>
       <%= link_to 'Read', "#{articles_path}/#{article.path}" %>
     </li>
   <% end %>
