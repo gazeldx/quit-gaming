@@ -3,14 +3,23 @@ class ArticlesController < ApplicationController
   include Utils
 
   def index
-    @articles = Article.all.order(:id)
+    @articles = Rails.configuration.articles
   end
 
   def show
-    @article = Article.find_by!(path: params[:path])
+    @articles = Rails.configuration.articles
+
+    @articles.each do |article|
+      if article.path == params[:path]
+        @article = article
+        break
+      end
+    end
+
     @content = read_file(
-      "_articles/#{@article.id}_#{@article.path}.md"
+      "_articles/#{@article.id}_#{@article.path}_#{@article.title}.md"
     )
+
     @markdown = Redcarpet::Markdown.new(
       Redcarpet::Render::HTML,
       autolink: true,
